@@ -17,6 +17,13 @@ class Board():
                     return old_figures[i], new_figures[i]
 
 
+    def move(self, element, x, y):
+        self.browser.find_element(By.CSS_SELECTOR, f"[class='{element}']").click()
+        print("click")
+        sleep(2)
+        location = self.browser.find_element(By.CSS_SELECTOR, f"[class='hint square-{x}{y}']").location
+
+
 def get_class(element):
     return element.get_attribute("class")
 
@@ -24,9 +31,8 @@ def get_class(element):
 def main():
     board = Board()
     input("Зайдите в игру и нажмите Enter")
-    while True:
-        hod = board.parse()
-        print(hod)
+    board.move("piece bp square-87", 8, 6)
+    sleep(100)
 
 
 if __name__ == '__main__':
