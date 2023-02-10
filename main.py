@@ -41,7 +41,8 @@ class Board():
         action.click()
         action.perform()
         if is_end:
-            self.browser.find_element(By.CSS_SELECTOR, f'class="promotion-piece w{figura}"')
+            self.browser.find_element(By.CSS_SELECTOR, f'[class="promotion-piece w{figura}"]').click()
+
 
 
 def get_class(element):
@@ -81,6 +82,7 @@ def main():
     limit = chess.engine.Limit(time=1.0)
 
     input("Зайдите в игру и нажмите Enter")
+    # mode = input("Введите w  или  b")
     c = 0
     while True:
         if c == 1:
@@ -102,6 +104,8 @@ def main():
             board.push(move)
             print(hod)
             board_player.move(*to_chess_com(hod))
+            if len(hod) > 4:
+                hod = hod[:4]
         c += 1
         c %= 2
     sleep(100)
