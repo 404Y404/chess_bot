@@ -44,6 +44,19 @@ class Board():
             self.browser.find_element(By.CSS_SELECTOR, f'[class="promotion-piece {mode}{figura}"]').click()
 
 
+    def game_end(self):
+        try:
+            self.browser.find_element(By.CSS_SELECTOR, ".game-result")
+            return 1
+        except:
+            return 0
+
+
+    def end(self):
+        self.browser.quit()
+
+
+
 
 def get_class(element):
     return element.get_attribute("class")
@@ -110,7 +123,10 @@ def main():
                 hod = hod[:4]
         c += 1
         c %= 2
-    sleep(100)
+        if board_player.game_end():
+            input("Игра закончена нажмите Enter для выхода")
+            board_player.end()
+            break
 
 
 if __name__ == '__main__':
