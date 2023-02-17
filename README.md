@@ -6,7 +6,7 @@ This is chess bot for chess.com based on stokfish.
 
 ## Installation
 
-### Requirments:
+### Requirements:
 
 * [stockfish](https://stockfishchess.org/)
 * [python](https://www.python.org/)
